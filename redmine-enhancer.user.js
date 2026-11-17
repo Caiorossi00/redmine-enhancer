@@ -95,106 +95,143 @@
     const style = document.createElement('style');
 
     style.textContent = `
-      .mypage-box table.list.issues {
-        width: 100%;
-        table-layout: auto;
-        border-collapse: separate;
-        border-spacing: 0;
-      }
+        .mypage-box table.list.issues {
+          width: 100%;
+          table-layout: auto;
+          border-collapse: separate;
+          border-spacing: 0;
+        }
 
-      .mypage-box table.list.issues th,
-      .mypage-box table.list.issues td {
-        padding: 12px 14px;
-        vertical-align: middle;
-      }
+        .mypage-box table.list.issues th,
+        .mypage-box table.list.issues td {
+          padding: 12px 14px;
+          vertical-align: middle;
+        }
 
-      .mypage-box table.list.issues thead th {
-        font-weight: 600;
-      }
+        .mypage-box table.list.issues thead th {
+          font-weight: 600;
+        }
 
-      .mypage-box table.list.issues tbody tr {
-        transition: background-color 0.15s ease;
-      }
+        .mypage-box table.list.issues tbody tr {
+          transition: background-color 0.15s ease;
+        }
 
-      .mypage-box table.list.issues tbody tr:hover {
-        background-color: #f1f5f9;
-      }
+        .mypage-box table.list.issues tbody tr:hover {
+          background-color: #f1f5f9;
+        }
 
-      .mypage-box table.list.issues td.subject {
-        min-width: 350px;
-        white-space: normal;
-        line-height: 1.5;
-      }
+        .mypage-box table.list.issues td.subject {
+          width: 450px;
+          min-width: 450px;
+          max-width: 450px;
+          white-space: normal;
+          overflow-wrap: anywhere;
+          line-height: 1.5;
+        }
 
-      .mypage-box table.list.issues td.subject a {
-        white-space: normal;
-        font-weight: 500;
-      }
+        .mypage-box table.list.issues td.subject a {
+          white-space: normal;
+          font-weight: 500;
+        }
 
-      .mypage-box table.list.issues .priority-column {
-        white-space: nowrap;
-      }
+        .mypage-box table.list.issues th.priority-column,
+        .mypage-box table.list.issues td.priority-column,
+        .mypage-box table.list.issues th.status-column,
+        .mypage-box table.list.issues td.status-column,
+        .mypage-box table.list.issues th.start-date-column,
+        .mypage-box table.list.issues td.start-date-column,
+        .mypage-box table.list.issues th.id,
+        .mypage-box table.list.issues td.id,
+        .mypage-box table.list.issues th.project,
+        .mypage-box table.list.issues td.project,
+        .mypage-box table.list.issues th.tracker,
+        .mypage-box table.list.issues td.tracker {
+          width: 1%;
+          white-space: nowrap;
+        }
 
-      .priority-indicator {
-        display: inline-block;
-        width: 9px;
-        height: 9px;
-        border-radius: 50%;
-        margin-right: 8px;
-      }
+        .priority-indicator {
+          display: inline-block;
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+          margin-right: 8px;
+        }
 
-      .priority-high {
-        background-color: #dc2626;
-      }
+        .priority-high {
+          background-color: #dc2626;
+        }
 
-      .priority-normal {
-        background-color: #2563eb;
-      }
+        .priority-normal {
+          background-color: #2563eb;
+        }
 
-      .priority-low {
-        background-color: #16a34a;
-      }
+        .priority-low {
+          background-color: #16a34a;
+        }
 
-      .status-badge {
-        display: inline-block;
-        padding: 4px 9px;
-        border-radius: 5px;
-        font-size: 12px;
-        font-weight: 500;
-        white-space: nowrap;
-      }
+        .status-badge {
+          display: inline-block;
+          padding: 4px 9px;
+          border-radius: 5px;
+          font-size: 12px;
+          font-weight: 500;
+          white-space: nowrap;
+        }
 
-      .status-success {
-        background-color: #dcfce7;
-        color: #166534;
-      }
+        .status-success {
+          background-color: #dcfce7;
+          color: #166534;
+        }
 
-      .status-warning {
-        background-color: #fef3c7;
-        color: #92400e;
-      }
+        .status-warning {
+          background-color: #fef3c7;
+          color: #92400e;
+        }
 
-      .status-info {
-        background-color: #dbeafe;
-        color: #1e40af;
-      }
+        .status-info {
+          background-color: #dbeafe;
+          color: #1e40af;
+        }
 
-      .status-danger {
-        background-color: #fee2e2;
-        color: #991b1b;
-      }
+        .status-danger {
+          background-color: #fee2e2;
+          color: #991b1b;
+        }
 
-      .status-default {
-        background-color: #f1f5f9;
-        color: #475569;
-      }
+        .status-default {
+          background-color: #f1f5f9;
+          color: #475569;
+        }
 
-      .start-date-column {
-        white-space: nowrap;
-        color: #64748b;
-        font-size: 13px;
-      }
-    `;
+        .start-date-column {
+          white-space: nowrap;
+          color: #64748b;
+          font-size: 13px;
+        }
+
+        .mypage-box table.list.issues th.sortable {
+          cursor: pointer;
+          user-select: none;
+          white-space: nowrap;
+        }
+
+        .mypage-box table.list.issues th.sortable::after {
+          content: ' ↕';
+          color: #94a3b8;
+          font-size: 11px;
+        }
+
+        .mypage-box table.list.issues th.sortable[data-sort-direction="asc"]::after {
+          content: ' ↑';
+          color: #000000;
+        }
+
+        .mypage-box table.list.issues th.sortable[data-sort-direction="desc"]::after {
+          content: ' ↓';
+          color: #000000;
+        }
+      `;
 
     document.head.appendChild(style);
   }
@@ -295,6 +332,116 @@
 
       row.insertBefore(priorityCell, row.firstChild);
       row.append(statusCell, startDateCell);
+    });
+
+    enableTableSorting(table, headerRow);
+  }
+
+  function enableTableSorting(table, headerRow) {
+    const headers = [...headerRow.querySelectorAll('th')];
+    const tbody = table.querySelector('tbody');
+
+    if (!tbody) {
+      return;
+    }
+
+    const priorityOrder = {
+      baixa: 1,
+      normal: 2,
+      alta: 3,
+      urgente: 4,
+      imediata: 5,
+    };
+
+    function getCellValue(row, index) {
+      return row.cells[index]?.textContent.trim() || '';
+    }
+
+    function compareValues(a, b, header, direction) {
+      const valueA = a.trim();
+      const valueB = b.trim();
+
+      if (!valueA && !valueB) return 0;
+      if (!valueA) return 1;
+      if (!valueB) return -1;
+
+      const columnClass = header.className;
+
+      if (columnClass.includes('priority-column')) {
+        const priorityA = priorityOrder[valueA.toLowerCase()];
+        const priorityB = priorityOrder[valueB.toLowerCase()];
+
+        if (priorityA !== undefined && priorityB !== undefined) {
+          return (priorityA - priorityB) * direction;
+        }
+      }
+
+      if (columnClass.includes('start-date-column')) {
+        const parseDate = (value) => {
+          const [day, month, year] = value.split('/').map(Number);
+          return new Date(year, month - 1, day).getTime();
+        };
+
+        return (parseDate(valueA) - parseDate(valueB)) * direction;
+      }
+
+      if (header.classList.contains('id')) {
+        return (Number(valueA) - Number(valueB)) * direction;
+      }
+
+      return (
+        valueA.localeCompare(valueB, 'pt-BR', {
+          numeric: true,
+          sensitivity: 'base',
+        }) * direction
+      );
+    }
+
+    headers.forEach((header) => {
+      const isSortable =
+        header.classList.contains('priority-column') ||
+        header.classList.contains('id') ||
+        header.classList.contains('status-column') ||
+        header.classList.contains('start-date-column');
+
+      if (!isSortable) {
+        return;
+      }
+
+      header.classList.add('sortable');
+      header.title = 'Clique para ordenar';
+
+      header.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const currentDirection = header.dataset.sortDirection;
+        const direction = currentDirection === 'asc' ? -1 : 1;
+        const directionName = direction === 1 ? 'asc' : 'desc';
+
+        headers.forEach((item) => {
+          delete item.dataset.sortDirection;
+        });
+
+        header.dataset.sortDirection = directionName;
+
+        const columnIndex = headers.indexOf(header);
+        const rows = [...tbody.querySelectorAll('tr.issue')];
+
+        const sortedRows = rows
+          .map((row, index) => ({ row, index }))
+          .sort((a, b) => {
+            const valueA = getCellValue(a.row, columnIndex);
+            const valueB = getCellValue(b.row, columnIndex);
+
+            const result = compareValues(valueA, valueB, header, direction);
+
+            return result || a.index - b.index;
+          });
+
+        sortedRows.forEach(({ row }) => {
+          tbody.appendChild(row);
+        });
+      });
     });
   }
 
